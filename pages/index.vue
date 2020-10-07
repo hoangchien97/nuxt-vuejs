@@ -6,11 +6,12 @@
     <SvgIcon icon="checkmark" />
 
     <button @click="handleNoti">Click Notification</button>
-    <button @click="toggleHambuger">Click Hambuger</button>
+    <button @click="openHamburger">Click Hambuger</button>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   layout: 'layout',
   name: 'Index',
@@ -23,6 +24,11 @@ export default {
       countries: [],
     }
   },
+  computed: {
+    ...mapState({
+      openHamburger: (state) => state.openHamburger,
+    }),
+  },
   async created() {
     await Promise.all([
       this.fetchLanguages(),
@@ -31,6 +37,9 @@ export default {
     ])
   },
   methods: {
+    ...mapActions({
+      handleOpenHamburger: 'openHamburger',
+    }),
     async fetchLanguages() {
       this.languages = await this.$masterService.fetchLanguages()
     },
@@ -46,8 +55,8 @@ export default {
       this.notifySuccess('Success')
       this.infoMsg('infoMsg')
     },
-    toggleHambuger() {
-      console.log('toggle hamburger')
+    openHamburger() {
+      this.handleOpenHamburger(true)
     },
   },
   head() {

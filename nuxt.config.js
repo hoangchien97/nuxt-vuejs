@@ -17,7 +17,12 @@ export default {
   loading: { color: '#fff' },
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/mixin', '~/plugins/api', '~/plugins/constants'],
+  plugins: [
+    '~/plugins/mixin',
+    '~/plugins/api',
+    '~/plugins/constants',
+    { src: '~/plugins/notifications', ssr: false },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -75,5 +80,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    transpile: ['vue-notifications'],
+  },
 }

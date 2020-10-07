@@ -1,13 +1,14 @@
 <template>
   <div>
-    <CoreLayout>
-      <Header />
-      <!-- <h1>Layouts</h1> -->
-      <div>
-        <Nuxt />
-      </div>
-      <Footer />
-    </CoreLayout>
+    <client-only>
+      <CoreLayout>
+        <Header />
+        <div>
+          <Nuxt />
+        </div>
+        <Footer />
+      </CoreLayout>
+    </client-only>
   </div>
 </template>
 

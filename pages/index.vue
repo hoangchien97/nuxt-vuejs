@@ -4,6 +4,9 @@
       <p class="homepage__heading">Index</p>
     </div>
     <SvgIcon icon="checkmark" />
+
+    <button @click="handleNoti">Click Notification</button>
+    <button @click="toggleHambuger">Click Hambuger</button>
   </div>
 </template>
 
@@ -36,6 +39,15 @@ export default {
     },
     async fetchContentCategories() {
       this.categories = await this.$masterService.fetchContentCategories()
+    },
+
+    handleNoti() {
+      this.notifyError('Error')
+      this.notifySuccess('Success')
+      this.infoMsg('infoMsg')
+    },
+    toggleHambuger() {
+      console.log('toggle hamburger')
     },
   },
   head() {

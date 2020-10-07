@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div>Index</div>
+    <SvgIcon icon="checkmark" />
   </div>
 </template>
 

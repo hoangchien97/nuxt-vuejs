@@ -1,8 +1,7 @@
 <template>
   <div>
     <SvgSprite />
-    Core Layouts
-    <SvgIcon icon="checkmark" />
+    <slot></slot>
   </div>
 </template>
 

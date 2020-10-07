@@ -2,7 +2,10 @@
   <div>
     <CoreLayout>
       <Header />
-      <h1>Layouts</h1>
+      <!-- <h1>Layouts</h1> -->
+      <div>
+        <Nuxt />
+      </div>
       <Footer />
     </CoreLayout>
   </div>

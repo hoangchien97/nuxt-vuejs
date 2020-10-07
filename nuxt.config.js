@@ -33,6 +33,37 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+
+    // install i18n for project
+    // https://i18n.nuxtjs.org/
+    [
+      'nuxt-i18n',
+      {
+        locales: [
+          {
+            name: 'Viet Nam',
+            code: 'vi',
+            iso: 'vi',
+            file: 'vi.json',
+          },
+          {
+            name: 'English',
+            code: 'en',
+            iso: 'en-US',
+            file: 'en.json',
+          },
+        ],
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected',
+          alwaysRedirect: true,
+          fallbackLocale: 'en',
+        },
+        langDir: 'locales/',
+        lazy: true,
+        defaultLocale: 'en',
+      },
+    ],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)

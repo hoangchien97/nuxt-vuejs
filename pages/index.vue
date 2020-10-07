@@ -56,3 +56,13 @@ export default {
   text-align: center;
 }
 </style>
+
+<style lang="scss" scoped>
+@import '@/assets/style/scss/base/_variables.scss';
+
+.homepage {
+  &__heading {
+    color: $color-primary;
+  }
+}
+</style>

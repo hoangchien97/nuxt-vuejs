@@ -13,6 +13,9 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
 
+  // https://nuxtjs.org/api/configuration-loading/
+  loading: { color: '#fff' },
+
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: ['~/plugins/mixin', '~/plugins/api', '~/plugins/constants'],
 

@@ -12,8 +12,29 @@ export default {
 
   data() {
     return {
-      title: 'Homepage',
+      title: 'Home Page',
+      categories: [],
+      languages: [],
+      countries: [],
     }
+  },
+  async created() {
+    await Promise.all([
+      this.fetchLanguages(),
+      this.fetchCountries(),
+      this.fetchContentCategories(),
+    ])
+  },
+  methods: {
+    async fetchLanguages() {
+      this.languages = await this.$masterService.fetchLanguages()
+    },
+    async fetchCountries() {
+      this.countries = await this.$masterService.fetchCountries()
+    },
+    async fetchContentCategories() {
+      this.categories = await this.$masterService.fetchContentCategories()
+    },
   },
   head() {
     return {

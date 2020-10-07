@@ -26,7 +26,60 @@
 </template>
 
 <script>
-export default {}
+// import { mapState, mapActions } from 'vuex'
+export default {
+  layout: 'layout',
+  name: 'Index',
+
+  data() {
+    return {
+      title: this.$t(`HomePage`),
+      categories: [],
+      languages: [],
+      countries: [],
+    }
+  },
+  computed: {
+    // ...mapState({
+    //   openHamburger: (state) => state.openHamburger,
+    // }),
+  },
+  async created() {
+    await Promise.all([
+      this.fetchLanguages(),
+      this.fetchCountries(),
+      this.fetchContentCategories(),
+    ])
+  },
+  methods: {
+    // ...mapActions({
+    //   handleOpenHamburger: 'openHamburger',
+    // }),
+    async fetchLanguages() {
+      this.languages = await this.$masterService.fetchLanguages()
+    },
+    async fetchCountries() {
+      this.countries = await this.$masterService.fetchCountries()
+    },
+    async fetchContentCategories() {
+      this.categories = await this.$masterService.fetchContentCategories()
+    },
+
+    handleNoti() {
+      this.notifyError('Error')
+      this.notifySuccess('Success')
+      this.infoMsg('infoMsg')
+    },
+    openHamburger() {
+      // this.handleOpenHamburger(true)
+    },
+  },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
+}
 </script>
 
 <style>

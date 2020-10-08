@@ -1,6 +1,8 @@
 {
   "name": "nuxt-vuejs-hdc",
   "version": "1.0.0",
+  "description": "Web Frontend",
+  "author": "Chien Hoang",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -25,7 +27,11 @@
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.5"
+    "dotenv": "^8.2.0",
+    "lodash": "^4.17.20",
+    "nuxt": "^2.14.5",
+    "nuxt-i18n": "^6.15.1",
+    "vue-toasted": "^1.1.28"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
@@ -38,9 +44,12 @@
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",
+    "node-sass": "^4.14.1",
     "prettier": "^2.1.1",
+    "sass-loader": "^10.0.2",
     "stylelint": "^13.7.0",
     "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "svg-inline-loader": "^0.8.2"
   }
 }

@@ -6,7 +6,7 @@
     <SvgIcon icon="checkmark" />
 
     <button @click="handleNoti">Click Notification</button>
-    <button @click="openHamburger">Click Hambuger</button>
+    <button @click="handleOpenHamburgers">Click Hambuger</button>
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      handleOpenHamburger: 'openHamburger',
+      changeStatusHamburger: 'openHamburger',
     }),
     async fetchLanguages() {
       this.languages = await this.$masterService.fetchLanguages()
@@ -55,8 +55,8 @@ export default {
       this.notifySuccess('Success')
       this.infoMsg('infoMsg')
     },
-    openHamburger() {
-      this.handleOpenHamburger(true)
+    handleOpenHamburger() {
+      this.changeStatusHamburger(true)
     },
   },
   head() {

@@ -3,8 +3,6 @@ export default ($axios, $store, $route) => {
   return {
     async callAPI(method, path, body, config = {}) {
       try {
-        // $axios.setToken(token, 'Bearer')
-
         if (['blob', 'arraybuffer'].includes(config.responseType)) {
           return $axios[method](path, body, config)
         }
@@ -23,9 +21,6 @@ export default ($axios, $store, $route) => {
       } catch (error) {
         // in case Unauthorized
         if (error.response && error.response.status === 401) {
-          // localStorage.removeItem('isLogined')
-          // await $store.dispatch('navbar/checkIsLogined', false)
-          // $store.dispatch('navbar/changeStatusNavbar', true)
           console.log('Unauthorized')
         }
         throw error.response

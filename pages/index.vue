@@ -1,32 +1,70 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">nuxt-vuejs-hdc</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+    <div class="homepage">
+      <p class="homepage__heading">Index</p>
     </div>
+    <SvgIcon icon="checkmark" />
+
+    <button @click="handleNoti">Click Notification</button>
+    <button @click="handleOpenHamburgers">Click Hambuger</button>
   </div>
 </template>
 
 <script>
-export default {}
+import { mapState, mapActions } from 'vuex'
+export default {
+  layout: 'layout',
+  name: 'Index',
+
+  data() {
+    return {
+      title: this.$t(`HomePage`),
+      categories: [],
+      languages: [],
+      countries: [],
+    }
+  },
+  computed: {
+    ...mapState({
+      openHamburger: (state) => state.openHamburger,
+    }),
+  },
+  async created() {
+    await Promise.all([
+      this.fetchLanguages(),
+      this.fetchCountries(),
+      this.fetchContentCategories(),
+    ])
+  },
+  methods: {
+    ...mapActions({
+      changeStatusHamburger: 'openHamburger',
+    }),
+    async fetchLanguages() {
+      this.languages = await this.$masterService.fetchLanguages()
+    },
+    async fetchCountries() {
+      this.countries = await this.$masterService.fetchCountries()
+    },
+    async fetchContentCategories() {
+      this.categories = await this.$masterService.fetchContentCategories()
+    },
+
+    handleNoti() {
+      this.notifyError('Error')
+      this.notifySuccess('Success')
+      this.infoMsg('infoMsg')
+    },
+    handleOpenHamburger() {
+      this.changeStatusHamburger(true)
+    },
+  },
+  head() {
+    return {
+      title: this.title,
+    }
+  },
+}
 </script>
 
 <style>
@@ -38,26 +76,14 @@ export default {}
   align-items: center;
   text-align: center;
 }
+</style>
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+<style lang="scss" scoped>
+@import '@/assets/style/scss/base/_variables.scss';
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.homepage {
+  &__heading {
+    color: $color-primary;
+  }
 }
 </style>
